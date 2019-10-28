@@ -28,6 +28,7 @@ public class GridPaneSampleEvents extends Application {
 		Button signInBtn = new Button ("Sign In");
 		Button cancelBtn = new Button ("Cancel");
 		Hyperlink forgotPwdLink = new Hyperlink("Forgot password");
+		Label notifyLbl = new Label("Notify");
 
 		GridPane root = new GridPane();
 		root.setVgap(20);
@@ -43,9 +44,10 @@ public class GridPaneSampleEvents extends Application {
 		//Cancel button: span 1, right aligned
 		GridPane.setConstraints(cancelBtn, 1,2, 1, 1, HPos.RIGHT, VPos.CENTER);
 		GridPane.setConstraints(forgotPwdLink, 0, 3,2,1);
+		GridPane.setConstraints(notifyLbl, 1, 3,2,1, HPos.RIGHT, VPos.CENTER);
 
 		root.getChildren().addAll(userIdLbl, userIdTxt, userPwdLbl, userPwdTxt,
-				                 signInBtn, cancelBtn, forgotPwdLink);
+				                 signInBtn, cancelBtn, forgotPwdLink, notifyLbl);
 			
 	
 		// event handlers
@@ -57,9 +59,10 @@ public class GridPaneSampleEvents extends Application {
 		});
 		
 		// lambda expression
-		cancelBtn.setOnAction(evt -> 
-			System.out.println("Lambda handler. Cancel clicked.")
-		);
+		cancelBtn.setOnAction(evt -> {
+			System.out.println("Lambda handler. Cancel clicked.");
+			notifyLbl.setText("Cancel pressed");
+		});
 		
 		// method reference
 		forgotPwdLink.setOnAction(this::forgotPwdHandler);

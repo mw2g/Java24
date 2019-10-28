@@ -24,26 +24,26 @@ public class ShortCircuit {
 
 	    public static void main(String[] args) {
 
-	        //List<Beer> beers = loadCellar();  // load the beer collection
-	    	 List<Beer> beers = new ArrayList<>();
+	        List<Beer> beers = loadCellar();  // load the beer collection
+//	    	 List<Beer> beers = new ArrayList<>();
 	        
 	        
-	        LongStream evenNumbers = LongStream
-	        		.iterate(0, num -> num+2)
-	        		.limit(5);
-	        
-	        evenNumbers.forEach(System.out::println);
+//	        LongStream evenNumbers = LongStream
+//	        		.iterate(0, num -> num+2)
+//	        		.limit(5);
+//	        
+//	        evenNumbers.forEach(System.out::println);
 	        
 	        
 	        
 	        Optional<Beer> firstBeer = beers.stream()
 	             .findFirst();
 	          
-	        //System.out.println("The first beer in collection: " + 
-	          //   firstBeer.orElse(new Beer("No name","No country",0 )));
-	        
 	        System.out.println("The first beer in collection: " + 
-		             firstBeer);
+	             firstBeer.orElse(new Beer("No name","No country",0 )));
+	        
+//	        System.out.println("The first beer in collection: " + 
+//		             firstBeer);
 	        
 	        
 	        

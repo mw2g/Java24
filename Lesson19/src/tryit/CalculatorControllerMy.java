@@ -5,12 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class CalculatorController {
+public class CalculatorControllerMy {
 	
 	@FXML                 // inject the value from GUI
 	private TextField displayField;  
 	  
 	private String previousValue="";
+//	private String currentValue="";
 	private String previousButton="";
 	private double result;
 	private String lastOperation;
@@ -28,24 +29,17 @@ public class CalculatorController {
 			 break;
 		 default:
 			 processOperation(buttonLabel);
-			 lastOperation = buttonLabel;
-			 previousButton = "operation";
 		}
 	}	
 	  
-	private void processDigit(String buttonLabel){
-		
-		if (previousButton != "operation") {
-			if (displayField.getText().indexOf(".")!=-1 && ".".equals(buttonLabel)) return;
+	private void processDigit(String buttonLabel){ 
+		if (previousButton == ""||previousButton == "digit") {
 			displayField.setText(displayField.getText() + buttonLabel);
 		}
 		else {
-			displayField.setText((buttonLabel==".")? "0." : buttonLabel);
+			displayField.setText(buttonLabel);
 		}
-		
-		if (".".equals(displayField.getText())) 
-			displayField.setText("0.");
-			
+		previousButton = "digit";
 	}
 	  
 	private void processOperation(String buttonLabel){
@@ -58,39 +52,34 @@ public class CalculatorController {
 			return;
 		default:{  
 			if (previousValue != "" && lastOperation != "") {
-				calculate(buttonLabel, lastOperation, previousValue, displayField.getText());
+				calculate(lastOperation, previousValue, displayField.getText());
 				
 			}
 			}
 		}
+		lastOperation = buttonLabel;
+		previousButton = "operation";
 		previousValue = displayField.getText();
 	}
 	  
-	private void calculate(String button, String operation, String prevVal, String curVal) {
-		Double a = Double.parseDouble(prevVal);
-		Double b = Double.parseDouble(curVal);
-		
+	private void calculate(String operation, String prevVal, String curVal) {
 		switch (operation) {
+		    
 			case "+":
-				result = a + b;
+				result = Double.parseDouble(prevVal) + Double.parseDouble(curVal);
 			break;
 			
 			case "-":
-				result = a - b;
+				result = Double.parseDouble(prevVal) - Double.parseDouble(curVal);
 		    break;
 		    
 			case "x":
-				result = a * b;
+				result = Double.parseDouble(prevVal) * Double.parseDouble(curVal);
 			break;
 			
 			case "/":
-				result = a / b;
+				result = Double.parseDouble(prevVal) / Double.parseDouble(curVal);
 			break;
-		}
-		if ("=".equals(button)) {
-			lastOperation = "";
-			previousButton = "";
-			previousValue = "";
 		}
 		displayField.setText("" + result);
 	}

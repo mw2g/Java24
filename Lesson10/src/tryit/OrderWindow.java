@@ -38,7 +38,7 @@ public class OrderWindow extends JFrame {
 		final JTextField quantity = new JTextField(20);
 
 		JButton buttonOrder = new JButton("Order");
-		final JLabel status = new JLabel(""); 
+		final JLabel status = new JLabel("123"); 
 	
 		buttonOrder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {

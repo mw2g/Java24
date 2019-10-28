@@ -62,8 +62,8 @@ public class Calculator {
 	  button4=new JButton("4");
 	  button5=new JButton("5");
 	  button6=new JButton("6");
-         button7=new JButton("7");
-         button8=new JButton("8");
+	  button7=new JButton("7");
+	  button8=new JButton("8");
 	  button9=new JButton("9");
 	  buttonPoint = new JButton(".");
 	  buttonEqual=new JButton("=");

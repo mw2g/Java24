@@ -12,7 +12,7 @@ import java.awt.GridBagLayout;
 
 import javax.swing.*;
 
-public class Calculator extends JFrame {
+public class Calculator { // extends JFrame {
 	
 	//Declare all calculators components
 	private JPanel windowContent;
@@ -31,12 +31,13 @@ public class Calculator extends JFrame {
 	public void setDisplayFieldText(String text) {
 		this.displayField.setText(text);
 	}
-
+	
+	JFrame frama = new JFrame();
 	//Constructor creates the components
 	//and adds they to the frame using of GridBagLayout
 	Calculator() {
 		
-		super("Calculator");
+		//super("Calculator");
 		
 		CalculatorEngine calculatorEngine = new CalculatorEngine(this);
 		
@@ -99,9 +100,9 @@ public class Calculator extends JFrame {
 		addComponent(windowContent, buttons[15], 4, 6, 1, 1);
 		
 		//Set the frame content
-		setContentPane(windowContent);
-		setVisible(true);
-		pack();
+		frama.setContentPane(windowContent);
+		frama.setVisible(true);
+		frama.pack();
 	} //end constructor Calculator()
 	
 	private void addComponent(Container container, Component component, int row,
